@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Câmera</title>
+</head>
+<body>
+    <h1>Visualização de Câmera</h1>
+    <video id="video" width="640" height="480" autoplay playsinline></video>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const video = document.getElementById('video');
+        const socket = io();
+
+        socket.on('stream', stream => {
+            video.srcObject = stream;
+        });
+    </script>
+</body>
+</html>
